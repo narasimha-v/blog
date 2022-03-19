@@ -26,7 +26,7 @@ export const CreatePost = () => {
 
 	return (
 		<div className='container center_vertical spacer_vertical'>
-			<div className='form_title'>Create new post</div>
+			<div className='form_title'>Create New Post</div>
 			<Formik
 				initialValues={initialValues}
 				onSubmit={onSubmit}

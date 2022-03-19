@@ -3,6 +3,7 @@
 @import url('styles/btn.css');
 @import url('styles/utils.css');
 @import url('styles/form.css');
+@import url('styles/loader.css');
 
 body {
 	margin: 0;
@@ -17,6 +18,15 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	font-family: 'Roboto', sans-serif;
+}
+
 .container {
 	padding: 20px;
 }
@@ -29,4 +39,15 @@ body {
 
 .post_container {
 	padding: 20px;
+}
+
+.back {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.post_description {
+	font-size: 20px;
+	line-height: 24px;
 }

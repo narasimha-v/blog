@@ -32,9 +32,9 @@ export const Home = () => {
 							<h2>{p.title}</h2>
 							<p>{p.description.slice(0, 200)}........</p>
 							<div className='card_btn_container'>
-								<a className='btn btn_primary' href='/'>
+								<Link className='btn btn_primary' to={`/post/${p.id}`}>
 									Read More
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>

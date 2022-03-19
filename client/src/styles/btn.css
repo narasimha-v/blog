@@ -22,4 +22,10 @@
 
 .btn_secondary {
 	background: linear-gradient(90deg, #403b4a, #e7e9bb);
+	box-shadow: 1px 10px 2rem rgb(234, 236, 191, 0.5);
+}
+
+.btn_secondary:hover {
+	background: linear-gradient(90deg, #403b4a, #e7e9bb);
+	box-shadow: 0px 5px 1rem rgb(234, 236, 191, 0.5);
 }
