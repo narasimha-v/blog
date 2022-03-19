@@ -1,16 +1,25 @@
-.btn_primary {
+.btn {
 	border: none;
 	outline: none;
-	padding: 0.8rem 2rem;
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+	font-weight: 700;
+	padding: 0.8rem 4rem;
 	border-radius: 50px;
 	font-size: 1.2rem;
-	color: white;
+	transition: all 0.2s ease-in;
+}
+
+.btn_primary {
 	background: linear-gradient(90deg, #ff9966, #ff5e62);
 	box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
-	transition: all 0.2s ease-in;
-	text-decoration: none;
 }
 
 .btn_primary:hover {
 	box-shadow: 0px 5px 1rem rgba(255, 94, 98, 0.5);
+}
+
+.btn_secondary {
+	background: linear-gradient(90deg, #403b4a, #e7e9bb);
 }

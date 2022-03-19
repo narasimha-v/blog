@@ -1,23 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
 @import url('styles/card.css');
 @import url('styles/btn.css');
+@import url('styles/utils.css');
+@import url('styles/form.css');
 
 body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
-	background-image: linear-gradient(
-		to right top,
-		#051937,
-		#004d7a,
-		#008793,
-		#00bf72,
-		#a8eb12
-	);
+	background-image: linear-gradient(to right, #0b8793, #360033);
 	width: 100vw;
 	height: 100vh;
 	color: #fff;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+	padding: 20px;
+}
+
+.posts_container {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.post_container {
+	padding: 20px;
 }

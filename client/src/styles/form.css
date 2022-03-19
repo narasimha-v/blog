@@ -1,0 +1,37 @@
+.form_title {
+	font-size: 60px;
+	font-weight: 900;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.form_field {
+	display: block;
+	outline: none;
+	border: none;
+	font-weight: bold;
+	width: 500px;
+	padding: 16px 20px;
+	border-radius: 4px;
+	font-size: 16px;
+	background: #f6f7f9;
+	color: #748194;
+}
+
+.form_label {
+	display: block;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 16px;
+	margin-bottom: 16px;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.form_submit_container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.form_error {
+	color: #ff5733;
+}
