@@ -3,7 +3,7 @@ import { Table, Model, Column, DataType } from 'sequelize-typescript';
 
 interface PostAttributes {
 	id: number;
-	name: string;
+	title: string;
 	description: string;
 	username: string;
 }
@@ -13,9 +13,9 @@ interface PostCreationAttributes extends Optional<PostAttributes, 'id'> {}
 @Table
 export class Posts extends Model<PostAttributes, PostCreationAttributes> {
 	@Column({ type: DataType.STRING, allowNull: false })
-	name!: string;
+	title!: string;
 
-	@Column({ type: DataType.STRING, allowNull: false })
+	@Column({ type: DataType.TEXT, allowNull: false })
 	description!: string;
 
 	@Column({ type: DataType.STRING, allowNull: false })

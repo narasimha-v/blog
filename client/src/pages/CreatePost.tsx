@@ -6,16 +6,16 @@ import { API_BASE_URL } from '../constants';
 
 interface PostForm {
 	username: string;
-	name: string;
+	title: string;
 	description: string;
 }
 
 export const CreatePost = () => {
 	const navigate = useNavigate();
-	const initialValues: PostForm = { username: '', name: '', description: '' };
+	const initialValues: PostForm = { username: '', title: '', description: '' };
 	const validationSchema = Yup.object().shape({
 		username: Yup.string().required().min(2).max(16),
-		name: Yup.string().required(),
+		title: Yup.string().required(),
 		description: Yup.string().required()
 	});
 
@@ -47,8 +47,8 @@ export const CreatePost = () => {
 					</div>
 					<div>
 						<label className='form_label'>Title</label>
-						<ErrorMessage name='name' component='h3' className='form_error' />
-						<Field name='name' placeholder='Title*' className='form_field' />
+						<ErrorMessage name='title' component='h3' className='form_error' />
+						<Field name='title' placeholder='Title*' className='form_field' />
 					</div>
 					<div>
 						<label className='form_label'>Description</label>

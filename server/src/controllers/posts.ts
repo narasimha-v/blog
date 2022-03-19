@@ -3,7 +3,7 @@ import { asyncWrapper } from '../middleware';
 import { Posts } from '../models';
 
 interface Post {
-	name: string;
+	title: string;
 	description: string;
 	username: string;
 }
