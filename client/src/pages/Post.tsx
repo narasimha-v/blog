@@ -15,7 +15,7 @@ export const Post = () => {
 			.then((res) => {
 				setPost(res.data.post);
 			});
-	}, []);
+	}, [id]);
 
 	return (
 		<div className='container center_vertical spacer_vertical'>

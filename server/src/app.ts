@@ -1,9 +1,9 @@
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import { errorHandler, notFound } from './middleware';
 import { sequelize } from './models';
-import { postsRouter } from './routes';
-import cors from 'cors';
+import { commentsRouter, postsRouter } from './routes';
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -17,6 +17,7 @@ app.get('/', (req, res) =>
 	res.send({ msg: `Hello human. Request from IP address ${req.ip} logged.` })
 );
 app.use('/posts', postsRouter);
+app.use('/comments', commentsRouter);
 app.use(notFound);
 app.use(errorHandler);
 

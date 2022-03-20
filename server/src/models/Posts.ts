@@ -1,5 +1,6 @@
 import { Optional } from 'sequelize';
-import { Table, Model, Column, DataType } from 'sequelize-typescript';
+import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
+import { Comments } from './Comments';
 
 interface PostAttributes {
 	id: number;
@@ -20,4 +21,7 @@ export class Posts extends Model<PostAttributes, PostCreationAttributes> {
 
 	@Column({ type: DataType.STRING, allowNull: false })
 	username!: string;
+
+	@HasMany(() => Comments, { onDelete: 'cascade' })
+	comments?: Comments[];
 }
