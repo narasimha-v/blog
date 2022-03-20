@@ -25,6 +25,15 @@
 	margin-bottom: 40px;
 }
 
+.spacer_vertical_small {
+	display: flex;
+	flex-direction: column;
+}
+
+.spacer_vertical_small > *:not(:last-child) {
+	margin-bottom: 16px;
+}
+
 .spacer_horizontal {
 	display: flex;
 }

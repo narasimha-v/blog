@@ -23,8 +23,8 @@ export const Home = () => {
 			</div>
 			<div className='posts_container center_horizontal'>
 				{posts.map((p) => (
-					<div className='post_container'>
-						<div key={p.id} className='card'>
+					<div key={p.id} className='container'>
+						<div className='card'>
 							<h4>
 								<div>{p.username}</div>
 								{getFormattedDate(p.createdAt)}

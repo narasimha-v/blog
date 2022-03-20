@@ -38,10 +38,18 @@ pre {
 }
 
 .post_container {
-	padding: 20px;
+	flex: 1;
 }
 
-.back {
+.post_container_left {
+	flex: 0.7;
+}
+
+.post_container_right {
+	flex: 0.3;
+}
+
+.post_back {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -50,4 +58,25 @@ pre {
 .post_description {
 	font-size: 20px;
 	line-height: 24px;
+}
+
+.create_comment {
+	display: block;
+	font-weight: bold;
+	outline: none;
+	border: none;
+	width: 100%;
+	border-radius: 4px;
+	font-size: 16px;
+	padding: 20px;
+	background: #e4e7ee;
+	color: #748194;
+}
+
+.comment {
+	padding: 20px;
+	font-size: 16px;
+	font-weight: 400;
+	border-radius: 8px;
+	background: #e4e7ee;
 }

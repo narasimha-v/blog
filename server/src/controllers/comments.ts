@@ -15,7 +15,7 @@ export const getComments = asyncWrapper(async (req, res) => {
 
 export const addComment = asyncWrapper(
 	async (req: Request<{}, {}, Comment>, res) => {
-		const post = await Comments.create(req.body);
-		return res.status(201).json({ post });
+		const comment = await Comments.create(req.body);
+		return res.status(201).json({ comment });
 	}
 );
