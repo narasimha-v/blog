@@ -25,60 +25,66 @@ export const CreatePost = () => {
 	};
 
 	return (
-		<div className='container center_vertical spacer_vertical'>
+		<div className='container center_vertical spacer_vertical_small'>
 			<div className='form_title'>Create New Post</div>
-			<Formik
-				initialValues={initialValues}
-				onSubmit={onSubmit}
-				validationSchema={validationSchema}>
-				<Form className='spacer_vertical'>
-					<div>
-						<label className='form_label'>Username</label>
-						<ErrorMessage
-							name='username'
-							component='h3'
-							className='form_error'
-						/>
-						<Field
-							name='username'
-							placeholder='Username*'
-							className='form_field'
-						/>
-					</div>
-					<div>
-						<label className='form_label'>Title</label>
-						<ErrorMessage name='title' component='h3' className='form_error' />
-						<Field name='title' placeholder='Title*' className='form_field' />
-					</div>
-					<div>
-						<label className='form_label'>Description</label>
-						<ErrorMessage
-							name='description'
-							component='h3'
-							className='form_error'
-						/>
-						<Field
-							name='description'
-							placeholder='Description*'
-							className='form_field'
-							component='textarea'
-							rows='12'
-						/>
-					</div>
-					<div className='form_submit_container spacer_horizontal'>
+			<div className='card_large'>
+				<Formik
+					initialValues={initialValues}
+					onSubmit={onSubmit}
+					validationSchema={validationSchema}>
+					<Form className='spacer_vertical'>
 						<div>
-							<Link to='/' className='btn btn_secondary'>
-								Cancel
-							</Link>
+							<label className='form_label'>Username</label>
+							<ErrorMessage
+								name='username'
+								component='h3'
+								className='form_error'
+							/>
+							<Field
+								name='username'
+								placeholder='Username*'
+								className='form_field'
+							/>
 						</div>
 						<div>
-							<button className='btn btn_primary' type='submit'>
-								Create
-							</button>
+							<label className='form_label'>Title</label>
+							<ErrorMessage
+								name='title'
+								component='h3'
+								className='form_error'
+							/>
+							<Field name='title' placeholder='Title*' className='form_field' />
 						</div>
-					</div>
-				</Form>
-			</Formik>
+						<div>
+							<label className='form_label'>Description</label>
+							<ErrorMessage
+								name='description'
+								component='h3'
+								className='form_error'
+							/>
+							<Field
+								name='description'
+								placeholder='Description*'
+								className='form_field'
+								component='textarea'
+								rows='10'
+							/>
+						</div>
+						<div className='form_submit_container spacer_horizontal'>
+							<div>
+								<Link to='/' className='btn btn_secondary'>
+									Cancel
+								</Link>
+							</div>
+							<div>
+								<button className='btn btn_primary' type='submit'>
+									Create
+								</button>
+							</div>
+						</div>
+					</Form>
+				</Formik>
+			</div>
 		</div>
 	);
 };

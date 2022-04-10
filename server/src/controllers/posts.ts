@@ -3,9 +3,9 @@ import { asyncWrapper, createCustomError } from '../middleware';
 import { Posts } from '../models';
 
 interface Post {
+	userId: number;
 	title: string;
 	description: string;
-	username: string;
 }
 
 export const getPosts = asyncWrapper(async (_, res) => {

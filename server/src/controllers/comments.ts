@@ -4,6 +4,7 @@ import { Comments } from '../models';
 
 interface Comment {
 	postId: number;
+	userId: number;
 	comment: string;
 }
 

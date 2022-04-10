@@ -1,17 +1,19 @@
 import { Optional } from 'sequelize';
 import {
-	Table,
-	Model,
+	BelongsTo,
 	Column,
 	DataType,
 	ForeignKey,
-	BelongsTo
+	Model,
+	Table
 } from 'sequelize-typescript';
 import { Posts } from './Posts';
+import { Users } from './Users';
 
 interface CommentAttributes {
 	id: number;
 	postId: number;
+	userId: number;
 	comment: string;
 }
 
@@ -31,4 +33,11 @@ export class Comments extends Model<
 
 	@BelongsTo(() => Posts)
 	post!: Posts;
+
+	@ForeignKey(() => Users)
+	@Column
+	userId!: number;
+
+	@BelongsTo(() => Users)
+	user!: Users;
 }
