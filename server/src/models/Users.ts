@@ -1,5 +1,13 @@
 import { Optional } from 'sequelize';
-import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import {
+	Column,
+	DataType,
+	DefaultScope,
+	HasMany,
+	Model,
+	Scopes,
+	Table
+} from 'sequelize-typescript';
 import { Comments } from './Comments';
 import { Posts } from './Posts';
 
@@ -11,6 +19,14 @@ interface UserAttributes {
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 
+@DefaultScope(() => ({
+	attributes: { exclude: ['password'] }
+}))
+@Scopes(() => ({
+	full: {
+		attributes: ['id', 'username', 'password']
+	}
+}))
 @Table
 export class Users extends Model<UserAttributes, UserCreationAttributes> {
 	@Column({ type: DataType.STRING, allowNull: false, unique: true })

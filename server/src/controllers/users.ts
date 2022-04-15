@@ -20,7 +20,7 @@ export const registerUser = asyncWrapper(
 export const loginUser = asyncWrapper(
 	async (req: Request<{}, {}, User>, res, next) => {
 		let { username, password } = req.body;
-		const user = await Users.findOne({ where: { username } });
+		const user = await Users.scope('full').findOne({ where: { username } });
 		if (!user) {
 			return next(createCustomError('Please check your credentials!', 404));
 		}
