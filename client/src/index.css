@@ -4,6 +4,7 @@
 @import url('styles/utils.css');
 @import url('styles/form.css');
 @import url('styles/loader.css');
+@import url('styles/header.css');
 
 body {
 	margin: 0;
@@ -25,6 +26,10 @@ pre {
 	white-space: -o-pre-wrap;
 	word-wrap: break-word;
 	font-family: 'Roboto', sans-serif;
+}
+
+.content {
+	padding-top: 100px;
 }
 
 .container {

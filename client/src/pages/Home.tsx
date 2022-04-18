@@ -16,17 +16,12 @@ export const Home = () => {
 
 	return (
 		<div className='container spacer_vertical'>
-			<div className='center_horizontal'>
-				<Link className='btn btn_primary' to='/post/create/'>
-					Create a post
-				</Link>
-			</div>
 			<div className='posts_container center_horizontal'>
 				{posts.map((p) => (
 					<div key={p.id} className='container'>
 						<div className='card'>
 							<h4>
-								<div>{p.username}</div>
+								<div>{p.user.username}</div>
 								{getFormattedDate(p.createdAt)}
 							</h4>
 							<h2>{p.title}</h2>

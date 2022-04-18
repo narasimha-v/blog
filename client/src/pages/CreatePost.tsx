@@ -5,16 +5,15 @@ import * as Yup from 'yup';
 import { API_BASE_URL } from '../constants';
 
 interface PostForm {
-	username: string;
+	userId: number;
 	title: string;
 	description: string;
 }
 
 export const CreatePost = () => {
 	const navigate = useNavigate();
-	const initialValues: PostForm = { username: '', title: '', description: '' };
+	const initialValues: PostForm = { userId: 1, title: '', description: '' };
 	const validationSchema = Yup.object().shape({
-		username: Yup.string().required().min(2).max(16),
 		title: Yup.string().required(),
 		description: Yup.string().required()
 	});
@@ -34,26 +33,17 @@ export const CreatePost = () => {
 					validationSchema={validationSchema}>
 					<Form className='spacer_vertical'>
 						<div>
-							<label className='form_label'>Username</label>
-							<ErrorMessage
-								name='username'
-								component='h3'
-								className='form_error'
-							/>
-							<Field
-								name='username'
-								placeholder='Username*'
-								className='form_field'
-							/>
-						</div>
-						<div>
 							<label className='form_label'>Title</label>
 							<ErrorMessage
 								name='title'
 								component='h3'
 								className='form_error'
 							/>
-							<Field name='title' placeholder='Title*' className='form_field' />
+							<Field
+								name='title'
+								placeholder='Title*'
+								className='form_field form_field_large'
+							/>
 						</div>
 						<div>
 							<label className='form_label'>Description</label>
@@ -65,9 +55,9 @@ export const CreatePost = () => {
 							<Field
 								name='description'
 								placeholder='Description*'
-								className='form_field'
+								className='form_field form_field_large'
 								component='textarea'
-								rows='10'
+								rows='12'
 							/>
 						</div>
 						<div className='form_submit_container spacer_horizontal'>

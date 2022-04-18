@@ -1,8 +1,11 @@
+import { User } from './User';
+
 export interface Post {
 	id: number;
-	username: string;
+	userId: number;
 	title: string;
 	description: string;
+	user: User;
 	createdAt: string;
 	updatedAt: string;
 }

@@ -27,7 +27,7 @@ export const IndividualPost: React.FC<{ id?: string }> = ({ id }) => {
 	return (
 		<div>
 			<h3>
-				<div>{post.username}</div>
+				<div>{post.user.username}</div>
 				{getFormattedDate(post.createdAt)}
 			</h3>
 			<h1>{post.title}</h1>

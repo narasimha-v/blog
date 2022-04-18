@@ -19,6 +19,7 @@ export const Comments: React.FC<{ id?: string }> = ({ id }) => {
 		const res = await axios.post<{ comment: Comment }>(
 			`${API_BASE_URL}/comments`,
 			{
+				userId: 1,
 				postId: id,
 				comment: newComment
 			}

@@ -19,8 +19,8 @@ app.get('/', (req, res) =>
 app.use('/posts', postsRouter);
 app.use('/comments', commentsRouter);
 app.use('/auth', usersRouter);
-app.use(notFound);
 app.use(errorHandler);
+app.use(notFound);
 
 const start = async () => {
 	try {
