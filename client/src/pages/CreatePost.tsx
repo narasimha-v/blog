@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { API_BASE_URL } from '../constants';
+import { AuthContext } from '../helpers';
 
 interface PostForm {
 	userId: number;
@@ -12,14 +14,36 @@ interface PostForm {
 
 export const CreatePost = () => {
 	const navigate = useNavigate();
-	const initialValues: PostForm = { userId: 1, title: '', description: '' };
+	const {
+		authorization: { isAuthorized, user }
+	} = useContext(AuthContext);
+
+	useEffect(() => {
+		if (!isAuthorized || !user) {
+			return navigate('/login');
+		}
+	}, [isAuthorized, user, navigate]);
+
+	if (!isAuthorized || !user) {
+		return null;
+	}
+
+	const initialValues: PostForm = {
+		userId: user.id,
+		title: '',
+		description: ''
+	};
 	const validationSchema = Yup.object().shape({
 		title: Yup.string().required(),
 		description: Yup.string().required()
 	});
 
 	const onSubmit = async (data: PostForm) => {
-		await axios.post(`${API_BASE_URL}/posts`, data);
+		let accessToken = localStorage.getItem('accessToken');
+		if (!accessToken) return;
+		await axios.post(`${API_BASE_URL}/posts`, data, {
+			headers: { accessToken }
+		});
 		navigate('/');
 	};
 

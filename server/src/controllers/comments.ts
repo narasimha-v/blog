@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { asyncWrapper } from '../middleware';
+import { asyncWrapper, createCustomError } from '../middleware';
 import { Comments, Posts, Users } from '../models';
 
 interface Comment {
@@ -19,9 +19,21 @@ export const getComments = asyncWrapper(async (req, res) => {
 
 export const addComment = asyncWrapper(
 	async (req: Request<{}, {}, Comment>, res) => {
-		const comment = await Comments.create(req.body, {
+		let comment = await Comments.create(req.body);
+		comment = (await Comments.findByPk(comment.id, {
 			include: [Users, Posts]
-		});
+		})) as Comments;
 		return res.status(201).json({ comment });
 	}
 );
+
+export const deleteComment = asyncWrapper(async (req, res, next) => {
+	const id = Number(req.query.id);
+	const userId = Number(req.query.userId);
+	const comment = await Comments.findOne({ where: { id } });
+	if (!comment || comment.userId !== userId) {
+		return next(createCustomError('Not authorized!', 404));
+	}
+	comment.destroy();
+	return res.status(201).json({ success: true });
+});

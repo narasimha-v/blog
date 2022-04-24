@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { API_BASE_URL } from '../constants';
+import { AuthContext } from '../helpers';
 
 interface UserForm {
 	username: string;
@@ -12,6 +13,7 @@ interface UserForm {
 
 export const Login = () => {
 	const navigate = useNavigate();
+	const { setAuthorization } = useContext(AuthContext);
 	const [loginError, showLoginError] = useState(false);
 	const initialValues: UserForm = { username: '', password: '' };
 	const validationSchema = Yup.object().shape({
@@ -21,7 +23,11 @@ export const Login = () => {
 
 	const onSubmit = async (data: UserForm) => {
 		try {
-			await axios.post(`${API_BASE_URL}/auth/login`, data);
+			const res = await axios.post(`${API_BASE_URL}/auth/login`, data);
+			let authorization = { isAuthorized: true, user: res.data.user };
+			localStorage.setItem('accessToken', res.data.accessToken);
+			localStorage.setItem('authorization', JSON.stringify(authorization));
+			setAuthorization(authorization);
 			navigate('/');
 		} catch (error) {
 			showLoginError(true);

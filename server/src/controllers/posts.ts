@@ -24,7 +24,10 @@ export const getPost = asyncWrapper(async (req, res, next) => {
 
 export const createPost = asyncWrapper(
 	async (req: Request<{}, {}, Post>, res) => {
-		const post = await Posts.create(req.body, { include: Users });
+		let post = await Posts.create(req.body);
+		post = (await Posts.findByPk(post.id, {
+			include: Users
+		})) as Posts;
 		return res.status(201).json({ post });
 	}
 );

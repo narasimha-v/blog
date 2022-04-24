@@ -2,6 +2,7 @@ import { Request } from 'express';
 import bcrypt from 'bcrypt';
 import { asyncWrapper, createCustomError } from '../middleware';
 import { Users } from '../models';
+import { sign } from 'jsonwebtoken';
 
 interface User {
 	username: string;
@@ -12,8 +13,12 @@ export const registerUser = asyncWrapper(
 	async (req: Request<{}, {}, User>, res) => {
 		let { username, password } = req.body;
 		password = await bcrypt.hash(password, 10);
-		await Users.create({ username, password });
-		return res.status(201).json({ success: true });
+		const user = await Users.create({ username, password });
+		const accessToken = sign(
+			{ username: user.username, id: user.id },
+			process.env.JWT_SECRET!
+		);
+		return res.status(201).json({ accessToken, user });
 	}
 );
 
@@ -28,6 +33,10 @@ export const loginUser = asyncWrapper(
 		if (!match) {
 			return next(createCustomError('Please check your credentials!', 404));
 		}
-		return res.status(201).json({ success: true });
+		const accessToken = sign(
+			{ username: user.username, id: user.id },
+			process.env.JWT_SECRET!
+		);
+		return res.status(201).json({ accessToken, user });
 	}
 );

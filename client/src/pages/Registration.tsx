@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { API_BASE_URL } from '../constants';
+import { AuthContext } from '../helpers';
 
 interface UserForm {
 	username: string;
@@ -12,6 +14,7 @@ interface UserForm {
 
 export const Registration = () => {
 	const navigate = useNavigate();
+	const { setAuthorization } = useContext(AuthContext);
 	const initialValues: UserForm = {
 		username: '',
 		password: '',
@@ -33,8 +36,16 @@ export const Registration = () => {
 	});
 
 	const onSubmit = async (data: UserForm) => {
-		await axios.post(`${API_BASE_URL}/auth/register`, data);
-		navigate('/');
+		try {
+			const res = await axios.post(`${API_BASE_URL}/auth/register`, data);
+			let authorization = { isAuthorized: true, user: res.data.user };
+			localStorage.setItem('accessToken', res.data.accessToken);
+			localStorage.setItem('authorization', JSON.stringify(authorization));
+			setAuthorization(authorization);
+			navigate('/');
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
