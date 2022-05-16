@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../constants';
 import { Post as IPost } from '../types';
-import { getFormattedDate } from '../utils';
+import { capitalize, getFormattedDate } from '../utils';
 
 export const IndividualPost: React.FC<{ id?: string }> = ({ id }) => {
 	const navigate = useNavigate();
@@ -27,7 +27,7 @@ export const IndividualPost: React.FC<{ id?: string }> = ({ id }) => {
 	return (
 		<div>
 			<h3>
-				<div>{post.user.username}</div>
+				<div>{capitalize(post.user.username)}</div>
 				{getFormattedDate(post.createdAt)}
 			</h3>
 			<h1>{post.title}</h1>

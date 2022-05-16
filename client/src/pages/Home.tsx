@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../constants';
 import { Post } from '../types';
-import { getFormattedDate } from '../utils';
+import { capitalize, getFormattedDate } from '../utils';
 
 export const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -21,7 +21,7 @@ export const Home = () => {
 					<div key={p.id} className='container'>
 						<div className='card'>
 							<h4>
-								<div>{p.user.username}</div>
+								<div>{capitalize(p.user.username)}</div>
 								{getFormattedDate(p.createdAt)}
 							</h4>
 							<h2>{p.title}</h2>

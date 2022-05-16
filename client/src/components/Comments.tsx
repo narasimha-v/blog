@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { API_BASE_URL } from '../constants';
 import { AuthContext } from '../helpers';
 import { Comment } from '../types';
+import { capitalize, getFormattedDate } from '../utils';
 
 export const Comments: React.FC<{ id?: string }> = ({ id }) => {
 	const {
@@ -81,7 +82,10 @@ export const Comments: React.FC<{ id?: string }> = ({ id }) => {
 					{comments.map((c) => (
 						<div className='comment_container space_between' key={c.id}>
 							<div className='spacer_vertical_small'>
-								<div className='comment_username'>{c.user.username}</div>
+								<div className='comment_username'>
+									{capitalize(c.user.username)}
+									<div>{getFormattedDate(c.createdAt)}</div>
+								</div>
 								<div className='comment'>{c.comment}</div>
 							</div>
 							{c.userId === user?.id && (

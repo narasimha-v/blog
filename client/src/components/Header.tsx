@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../helpers';
+import { capitalize } from '../utils';
 
 export const Header = () => {
 	const navigate = useNavigate();
@@ -21,7 +22,9 @@ export const Header = () => {
 			<div className='header-content'>
 				<div>
 					{user && (
-						<div className='navbar_username'>Welcome {user.username}</div>
+						<div className='navbar_username'>
+							Welcome {capitalize(user.username)}
+						</div>
 					)}
 				</div>
 				<div className='spacer_horizontal'>

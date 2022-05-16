@@ -9,6 +9,7 @@ import {
 	Table
 } from 'sequelize-typescript';
 import { Comments } from './Comments';
+import { Likes } from './Likes';
 import { Posts } from './Posts';
 
 interface UserAttributes {
@@ -40,4 +41,7 @@ export class Users extends Model<UserAttributes, UserCreationAttributes> {
 
 	@HasMany(() => Comments, { onDelete: 'cascade' })
 	comments?: Comments[];
+
+	@HasMany(() => Likes, { onDelete: 'cascade' })
+	likes?: Likes[];
 }

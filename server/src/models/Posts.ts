@@ -9,6 +9,7 @@ import {
 	Table
 } from 'sequelize-typescript';
 import { Comments } from './Comments';
+import { Likes } from './Likes';
 import { Users } from './Users';
 
 interface PostAttributes {
@@ -37,4 +38,7 @@ export class Posts extends Model<PostAttributes, PostCreationAttributes> {
 
 	@HasMany(() => Comments, { onDelete: 'cascade' })
 	comments?: Comments[];
+
+	@HasMany(() => Likes, { onDelete: 'cascade' })
+	likes?: Likes[];
 }
