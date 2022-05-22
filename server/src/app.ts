@@ -3,7 +3,12 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { errorHandler, notFound } from './middleware';
 import { sequelize } from './models';
-import { commentsRouter, postsRouter, usersRouter } from './routes';
+import {
+	commentsRouter,
+	likesRouter,
+	postsRouter,
+	usersRouter
+} from './routes';
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -19,6 +24,7 @@ app.get('/', (req, res) =>
 app.use('/posts', postsRouter);
 app.use('/comments', commentsRouter);
 app.use('/auth', usersRouter);
+app.use('/likes', likesRouter);
 app.use(errorHandler);
 app.use(notFound);
 

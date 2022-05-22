@@ -1,3 +1,4 @@
+import { Like } from './Like';
 import { User } from './User';
 
 export interface Post {
@@ -8,4 +9,5 @@ export interface Post {
 	user: User;
 	createdAt: string;
 	updatedAt: string;
+	likes: Like[];
 }

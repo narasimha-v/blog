@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { asyncWrapper, createCustomError } from '../middleware';
-import { Posts, Users } from '../models';
+import { Likes, Posts, Users } from '../models';
 
 interface Post {
 	userId: number;
@@ -9,13 +9,13 @@ interface Post {
 }
 
 export const getPosts = asyncWrapper(async (_, res) => {
-	const posts = await Posts.findAll({ include: Users });
+	const posts = await Posts.findAll({ include: [Users, Likes] });
 	return res.status(200).json({ posts });
 });
 
 export const getPost = asyncWrapper(async (req, res, next) => {
 	const pId = req.params.id;
-	const post = await Posts.findByPk(pId, { include: Users });
+	const post = await Posts.findByPk(pId, { include: [Users, Likes] });
 	if (!post) {
 		return next(createCustomError(`Post with id ${pId} not found!`, 404));
 	}

@@ -42,6 +42,14 @@
 	margin-right: 20px;
 }
 
+.spacer_horizontal_small {
+	display: flex;
+}
+
+.spacer_horizontal_small > *:not(:last-child) {
+	margin-right: 12px;
+}
+
 .flex-fill {
 	display: flex;
 	flex-direction: column;
