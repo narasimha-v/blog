@@ -31,3 +31,16 @@ export const createPost = asyncWrapper(
 		return res.status(201).json({ post });
 	}
 );
+
+export const deletePost = asyncWrapper(async (req, res, next) => {
+	const pId = req.params.id;
+	const userId = req.user?.id;
+	const post = await Posts.findByPk(pId);
+	if (!post) {
+		return next(createCustomError(`Post with id ${pId} not found!`, 404));
+	} else if (post.userId !== userId) {
+		return next(createCustomError('Not authorized!', 404));
+	}
+	post.destroy();
+	return res.status(200).json({ post });
+});

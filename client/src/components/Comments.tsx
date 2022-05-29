@@ -17,7 +17,6 @@ export const Comments: React.FC<{ id?: string }> = ({ id }) => {
 			.get<{ comments: Comment[] }>(`${API_BASE_URL}/comments/${id}`)
 			.then((res) => {
 				setComments(res.data.comments);
-				console.log(res.data);
 			});
 	}, [id]);
 
