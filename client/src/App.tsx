@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Header } from './components';
-import { CreatePost, Home, Login, NotFound, Post, Registration } from './pages';
-import { Authorization, AuthContext } from './helpers';
-import { useState } from 'react';
+import { AuthContext, Authorization } from './helpers';
+import {
+	CreatePost,
+	Home,
+	Login,
+	NotFound,
+	Post,
+	Profile,
+	Registration
+} from './pages';
 
 export const App = () => {
 	const authSaved = JSON.parse(localStorage.getItem('authorization') ?? '{}');
@@ -20,6 +28,7 @@ export const App = () => {
 					<div className='content'>
 						<Routes>
 							<Route path='/' element={<Home />} />
+							<Route path='/profile/:id' element={<Profile />} />
 							<Route path='/post/create' element={<CreatePost />} />
 							<Route path='/post/:id' element={<Post />} />
 							<Route path='/register' element={<Registration />} />

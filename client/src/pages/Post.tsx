@@ -1,7 +1,9 @@
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Comments, IndividualPost } from '../components';
 
 export const Post = () => {
+	const navigate = useNavigate();
+
 	const { id } = useParams();
 
 	return (
@@ -15,9 +17,9 @@ export const Post = () => {
 				</div>
 			</div>
 			<div className='post_back'>
-				<Link className='btn btn_primary' to='/'>
+				<button className='btn btn_primary' onClick={() => navigate(-1)}>
 					Back
-				</Link>
+				</button>
 			</div>
 		</div>
 	);

@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../constants';
 import { AuthContext } from '../helpers';
 import { Post as IPost } from '../types';
-import { capitalize, getFormattedDate } from '../utils';
+import { getFormattedDate } from '../utils';
+import { UsernameDisplay } from './UsernameDisplay';
 
 export const IndividualPost: React.FC<{ id?: string }> = ({ id }) => {
 	const navigate = useNavigate();
@@ -46,7 +47,7 @@ export const IndividualPost: React.FC<{ id?: string }> = ({ id }) => {
 		<div>
 			<div className='space_between'>
 				<h3>
-					<div>{capitalize(post.user.username)}</div>
+					<UsernameDisplay user={post.user} />
 					{getFormattedDate(post.createdAt)}
 				</h3>
 				<div>

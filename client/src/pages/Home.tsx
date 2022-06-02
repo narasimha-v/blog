@@ -2,10 +2,11 @@ import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
+import { UsernameDisplay } from '../components';
 import { API_BASE_URL } from '../constants';
 import { AuthContext } from '../helpers';
 import { Post } from '../types';
-import { capitalize, getFormattedDate } from '../utils';
+import { getFormattedDate } from '../utils';
 
 export const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -49,7 +50,7 @@ export const Home = () => {
 					<div key={p.id} className='container'>
 						<div className='card'>
 							<h4>
-								<div>{capitalize(p.user.username)}</div>
+								<UsernameDisplay user={p.user} />
 								{getFormattedDate(p.createdAt)}
 							</h4>
 							<h2>{p.title}</h2>

@@ -116,3 +116,8 @@ pre {
 	font-size: 24px;
 	font-weight: 700;
 }
+
+.username:hover {
+	cursor: pointer;
+	color: #ff9966;
+}

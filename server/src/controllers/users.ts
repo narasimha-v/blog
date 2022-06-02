@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import bcrypt from 'bcrypt';
 import { asyncWrapper, createCustomError } from '../middleware';
-import { Users } from '../models';
+import { Posts, Users } from '../models';
 import { sign } from 'jsonwebtoken';
 
 interface User {
@@ -40,3 +40,9 @@ export const loginUser = asyncWrapper(
 		return res.status(201).json({ accessToken, user });
 	}
 );
+
+export const userInfo = asyncWrapper(async (req, res, next) => {
+	const id = req.params.id;
+	const user = await Users.findByPk(id, { include: [Posts] });
+	return res.status(200).json({ user });
+});
