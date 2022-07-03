@@ -4,22 +4,6 @@ Blog application built with react, node, express, typescript & mysql.
 
 ## Installation
 
-Install client and server using yarn package manager.
-
-#### Client
-
-```bash
-  cd client
-  yarn install
-```
-
-#### Server
-
-```bash
-  cd server
-  yarn install
-```
-
 ## Client Environment Variables
 
 To run this project, you will need to add the following environment variables to your client .env file
@@ -58,6 +42,7 @@ Start the server
 
 ```bash
   cd server
+  yarn install
   npm run dev
 ```
 
@@ -65,6 +50,7 @@ Start the client
 
 ```bash
   cd client
+  yarn install
   npm run start
 ```
 
