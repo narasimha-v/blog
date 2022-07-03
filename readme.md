@@ -2,8 +2,6 @@
 
 Blog application built with react, node, express, typescript & mysql.
 
-## Installation
-
 ## Client Environment Variables
 
 To run this project, you will need to add the following environment variables to your client .env file
